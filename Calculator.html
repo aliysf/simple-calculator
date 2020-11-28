@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<div class="calculator">
+    <input id="result" value="0">
+    <table>
+        <tr>
+            <td><button onclick="addNumber(1)">1</button></td>
+            <td><button onclick="addNumber(2)">2</button></td>
+            <td><button onclick="addNumber(3)">3</button></td>
+            <td><button onclick="plus()">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addNumber(4)">4</button></td>
+            <td><button onclick="addNumber(5)">5</button></td>
+            <td><button onclick="addNumber(6)">6</button></td>
+            <td><button onclick="min()">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addNumber(7)">7</button></td>
+            <td><button onclick="addNumber(8)">8</button></td>
+            <td><button onclick="addNumber(9)">9</button></td>
+            <td><button onclick="multiple()">x</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addNumber(0)">0</button></td>
+            <td><button style="background: #7ad27a" onclick="execute()">=</button></td>
+            <td><button style="background: #e38e8e" onclick="clearResult()">c</button></td>
+            <td><button onclick="divide()">/</button></td>
+        </tr>
+    </table>
+</div>
+<script>
+    var temp=0;
+    var tempOpr=null;
+    function clearResult() {
+        document.getElementById("result").value=0;
+        temp=0;
+        tempOpr=null;
+    }
+    function addNumber(num) {
+        document.getElementById("result").value= parseInt(document.getElementById("result").value+num);
+    }
+    function plus() {
+        temp= document.getElementById("result").value
+        document.getElementById("result").value=0
+        tempOpr="plus"
+    }
+    function min() {
+        temp= document.getElementById("result").value
+        document.getElementById("result").value=0
+        tempOpr="min"
+    }
+    function multiple() {
+        temp= document.getElementById("result").value
+        document.getElementById("result").value=0
+        tempOpr="multiple"
+    }
+    function divide() {
+        temp= document.getElementById("result").value
+        document.getElementById("result").value=0
+        tempOpr="divide"
+    }
+    function execute() {
+        if(tempOpr=="plus"){
+            document.getElementById("result").value=parseInt(document.getElementById("result").value)+parseInt(temp);
+        }
+        else if (tempOpr=="min"){
+            document.getElementById("result").value=parseInt(document.getElementById("result").value)-parseInt(temp);
+        }
+        else if (tempOpr=="multiple"){
+            document.getElementById("result").value=parseInt(document.getElementById("result").value)*parseInt(temp);
+        }
+        else if (tempOpr=="divide"){
+            document.getElementById("result").value=parseInt(document.getElementById("result").value)/parseInt(temp);
+        }
+        else{
+            return;
+        }
+        temp=0;
+        tempOpr=null;
+    }
+</script>
+</body>
+
+</html>
